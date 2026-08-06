@@ -1,0 +1,103 @@
+/* ObsidianPromptOptimizer styles. */
+
+/* Ribbon: pulse animation while optimizing. */
+.opo-ribbon.is-optimizing {
+  color: var(--text-accent);
+  animation: opo-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes opo-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+/* Status bar: fade in/out. */
+.opo-status {
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Log modal. */
+.opo-log-modal pre {
+  max-height: 60vh;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-size: var(--font-ui-smaller);
+}
+
+/* ===== Optimization progress decoration (selection highlight + in-editor banner + persistent Notice) ===== */
+/* All colors use Obsidian theme variables, so light and dark themes are both supported. */
+
+/* Streaming rewrite range: mark highlight, tinted by the theme accent color. */
+.opo-optimizing-range {
+  background-color: color-mix(in srgb, var(--text-accent) 12%, transparent);
+  transition: background-color 0.3s ease;
+}
+
+/* In-editor progress banner widget, placed above the selection. */
+.opo-progress-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  background-color: var(--background-secondary);
+  border-left: 3px solid var(--text-accent);
+  font-size: var(--font-ui-smaller);
+  color: var(--text-normal);
+}
+
+/* Banner text: takes the remaining space and pushes the stop button to the right. */
+.opo-progress-banner-text {
+  flex: 1;
+}
+
+/* Small "Stop" button: shared by the banner and the persistent Notice. */
+.opo-progress-banner-stop,
+.opo-notice-stop {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 0 8px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.opo-progress-banner-stop:hover,
+.opo-notice-stop:hover {
+  color: var(--text-accent);
+  border-color: var(--text-accent);
+}
+
+/* Spinning spinner: shared by the banner and the persistent Notice. */
+.opo-spinner {
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border: 2px solid var(--background-modifier-border);
+  border-top-color: var(--text-accent);
+  border-radius: 50%;
+  animation: opo-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes opo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Persistent Notice internal layout. */
+.opo-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.opo-notice-text {
+  flex: 1;
+  font-weight: normal;
+}

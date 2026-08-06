@@ -1,0 +1,10 @@
+{
+  "id": "user-prompt-optimizer",
+  "name": "User Prompt Optimizer",
+  "version": "0.5.0",
+  "minAppVersion": "1.11.4",
+  "description": "Select a prompt and refine it with an LLM. Two modes: template-driven structured optimization, and template-free light polishing (disambiguate / dedupe / mark missing info with placeholders).",
+  "author": "chuanqq",
+  "authorUrl": "https://github.com/chuanqq",
+  "isDesktopOnly": true
+}
